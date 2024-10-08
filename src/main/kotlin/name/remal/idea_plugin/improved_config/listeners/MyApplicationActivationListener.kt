@@ -1,4 +1,4 @@
-package com.github.remal.ideaimprovedconfig.listeners
+package name.remal.idea_plugin.improved_config.listeners
 
 import com.intellij.openapi.application.ApplicationActivationListener
 import com.intellij.openapi.diagnostic.thisLogger

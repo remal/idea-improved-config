@@ -1,9 +1,9 @@
-package com.github.remal.ideaimprovedconfig.services
+package name.remal.idea_plugin.improved_config.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.remal.ideaimprovedconfig.MyBundle
+import name.remal.idea_plugin.improved_config.MyBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {

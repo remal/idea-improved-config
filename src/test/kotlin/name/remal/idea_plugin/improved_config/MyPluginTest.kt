@@ -1,4 +1,4 @@
-package com.github.remal.ideaimprovedconfig
+package name.remal.idea_plugin.improved_config
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.components.service
@@ -6,7 +6,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
-import com.github.remal.ideaimprovedconfig.services.MyProjectService
+import name.remal.idea_plugin.improved_config.services.MyProjectService
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class MyPluginTest : BasePlatformTestCase() {

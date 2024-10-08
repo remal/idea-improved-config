@@ -1,4 +1,4 @@
-package com.github.remal.ideaimprovedconfig
+package name.remal.idea_plugin.improved_config
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

@@ -1,4 +1,4 @@
-package com.github.remal.ideaimprovedconfig.toolWindow
+package name.remal.idea_plugin.improved_config.tool_window
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.remal.ideaimprovedconfig.MyBundle
-import com.github.remal.ideaimprovedconfig.services.MyProjectService
+import name.remal.idea_plugin.improved_config.MyBundle
+import name.remal.idea_plugin.improved_config.services.MyProjectService
 import javax.swing.JButton
 
 
