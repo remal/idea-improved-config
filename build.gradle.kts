@@ -10,7 +10,6 @@ plugins {
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
     alias(libs.plugins.kover) // Gradle Kover Plugin
     idea
-    eclipse
 }
 
 group = providers.gradleProperty("pluginGroup").get()
@@ -165,13 +164,6 @@ intellijPlatformTesting {
 
 idea {
     module {
-        isDownloadJavadoc = true
-        isDownloadSources = true
-    }
-}
-
-eclipse {
-    classpath {
         isDownloadJavadoc = true
         isDownloadSources = true
     }
