@@ -1,15 +1,17 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "github>remal/renovate-config:global"
+    "github>remal/renovate-config:global",
   ],
 
   "git-submodules": {
     // This is in beta for now, so let's use Dependabot to update Git submodules
-    enabled: false
+    enabled: false,
   },
 
-  enabledManagers: ['regex'],
+  enabledManagers: [
+    'regex'
+  ],
 
   customManagers: [
     {
@@ -33,12 +35,10 @@
         "maven"
       ],
       matchPackageNames: [
-        "com.jetbrains.intellij.*",
-        "idea:*",
+        "com.jetbrains.intellij.**",
       ],
       ignoreUnstable: false,
-      matchNewValue: "^(?<version>\\d+)-EAP-SNAPSHOT$",
-      extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$",
-    }
-  ]
+      extractVersion: "^(?<version>(\\d{3,}|2\\d{3}(\\.\\d+)*))-EAP-SNAPSHOT$",
+    },
+  ],
 }
