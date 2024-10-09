@@ -35,10 +35,10 @@
         "maven"
       ],
       matchPackageNames: [
-        "com.jetbrains.intellij.**",
+        "com.jetbrains.intellij.*",
       ],
       ignoreUnstable: false,
-      extractVersion: "^(?<version>(\\d{3,}|2\\d{3}(\\.\\d+)*))-EAP-SNAPSHOT$",
+      extractVersion: "^(?<version>(\\d{3,}|2\\d{3}(\\.\\d+)*))(-EAP-SNAPSHOT)?$",
     },
   ],
 }
