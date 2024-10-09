@@ -40,6 +40,7 @@
       ],
       ignoreUnstable: false,
       extractVersion: "^(?<version>\\d+)(\\.\\d)*-EAP-SNAPSHOT$",
+      packageName: "",
     },
   ],
 }
