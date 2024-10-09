@@ -32,12 +32,13 @@
       matchDatasources: [
         "maven"
       ],
-      matchRepositories: [
-        "https://www.jetbrains.com/intellij-repository/snapshots/"
+      matchPackageNames: [
+        "com.jetbrains.intellij.*",
+        "idea:*",
       ],
       ignoreUnstable: false,
+      matchNewValue: "^(?<version>\\d+)-EAP-SNAPSHOT$",
       extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$",
-      allowedVersions: "^\\d+$"
     }
   ]
 }
