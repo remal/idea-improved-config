@@ -27,7 +27,6 @@
       packageNameTemplate: "com.jetbrains.intellij.idea:ideaIC",
       datasourceTemplate: "maven",
       registryUrlTemplate: "https://www.jetbrains.com/intellij-repository/snapshots/",
-      versioningTemplate: "docker",
     }
   ],
 
@@ -40,7 +39,7 @@
         "intellij-ideaIC-build-eap"
       ],
       ignoreUnstable: false,
-      //extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$",
+      extractVersion: "^(?<version>\\d+(\\.\\d)*)-EAP-SNAPSHOT$",
     },
   ],
 }
