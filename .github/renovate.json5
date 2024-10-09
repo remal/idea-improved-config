@@ -23,7 +23,7 @@
         "(^|\\n)\\s*platformType\\s*=\\s*IC\\s*(\\n+|$)[\\s\\S]*?(^|\\n)\\s*pluginUntilBuild\\s*=\\s*(?<currentValue>\\d+)\\.\\*\\s*(\\n+|$)",
         "(^|\\n)\\s*pluginUntilBuild\\s*=\\s*(?<currentValue>\\d+)\\.\\*\\s*(\\n+|$)[\\s\\S]*?(^|\\n)\\s*platformType\\s*=\\s*IC\\s*(\\n+|$)"
       ],
-      depNameTemplate: "intellij-ideaIC-build-eap",
+      depNameTemplate: "intellij-ideaIC-build-range-eap",
       packageNameTemplate: "com.jetbrains.intellij.idea:ideaIC",
       datasourceTemplate: "maven",
       registryUrlTemplate: "https://www.jetbrains.com/intellij-repository/snapshots/",
@@ -36,10 +36,10 @@
         "maven"
       ],
       matchDepNames: [
-        "intellij-ideaIC-build-eap"
+        "intellij-ideaIC-build-range-eap"
       ],
       ignoreUnstable: false,
-      extractVersion: "^(?<version>\\d+(\\.\\d)*)-EAP-SNAPSHOT$",
+      extractVersion: "^(?<version>\\d+)(\\.\\d)*-EAP-SNAPSHOT$",
     },
   ],
 }
