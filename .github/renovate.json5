@@ -9,7 +9,7 @@
     enabled: false
   },
 
-  enabledManagers: [],
+  enabledManagers: ['regex'],
 
   customManagers: [
     {
@@ -36,7 +36,8 @@
         "https://www.jetbrains.com/intellij-repository/snapshots/"
       ],
       ignoreUnstable: false,
-      extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$"
+      extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$",
+      allowedVersions: "^\\d+$"
     }
   ]
 }
