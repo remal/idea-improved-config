@@ -1,11 +1,43 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>remal/renovate-config:global"],
+  extends: [
+    "github>remal/renovate-config:global"
+  ],
 
   "git-submodules": {
-    enabled: false, // This is in beta for now, so let's use Dependabot to update Git submodules
+    // This is in beta for now, so let's use Dependabot to update Git submodules
+    enabled: false
   },
 
-  // $$$sync-with-template-modifiable: local $$$
-  // $$$sync-with-template-modifiable-end$$$
+  enabledManagers: [],
+
+  customManagers: [
+    {
+      customType: "regex",
+      fileMatch: [
+        "^gradle\\.properties$"
+      ],
+      matchStrings: [
+        "(^|\\n)\\s*platformType\\s*=\\s*IC\\s*(\\n+|$)[\\s\\S]*?(^|\\n)\\s*pluginUntilBuild\\s*=\\s*(?<currentValue>\\d+)\\.\\*\\s*(\\n+|$)",
+        "(^|\\n)\\s*pluginUntilBuild\\s*=\\s*(?<currentValue>\\d+)\\.\\*\\s*(\\n+|$)[\\s\\S]*?(^|\\n)\\s*platformType\\s*=\\s*IC\\s*(\\n+|$)"
+      ],
+      packageNameTemplate: "com.jetbrains.intellij.idea:ideaIC",
+      datasourceTemplate: "maven",
+      registryUrlTemplate: "https://www.jetbrains.com/intellij-repository/snapshots/",
+      versioningTemplate: "semver"
+    }
+  ],
+
+  packageRules: [
+    {
+      matchDatasources: [
+        "maven"
+      ],
+      matchRepositories: [
+        "https://www.jetbrains.com/intellij-repository/snapshots/"
+      ],
+      ignoreUnstable: false,
+      extractVersion: "^(?<version>\\d+)-EAP-SNAPSHOT$"
+    }
+  ]
 }
