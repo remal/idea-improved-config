@@ -24,7 +24,6 @@
       packageNameTemplate: "com.jetbrains.intellij.idea:ideaIC",
       datasourceTemplate: "maven",
       registryUrlTemplate: "https://www.jetbrains.com/intellij-repository/snapshots/",
-      versioningTemplate: "semver"
     }
   ],
 
