@@ -1,32 +1,32 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.tasks.aware.IntelliJPlatformVersionAware
+import org.jetbrains.intellij.platform.gradle.utils.PlatformJavaVersions
+import org.jetbrains.intellij.platform.gradle.utils.Version
 
 plugins {
-    java // Java support
-    alias(libs.plugins.kotlin) // Kotlin support
-    alias(libs.plugins.intelliJPlatform) // IntelliJ Platform Gradle Plugin
-    alias(libs.plugins.changelog) // Gradle Changelog Plugin
-    alias(libs.plugins.qodana) // Gradle Qodana Plugin
-    alias(libs.plugins.kover) // Gradle Kover Plugin
+    java
+    id("org.jetbrains.kotlin.jvm")
+    alias(libs.plugins.intelliJPlatform)
+    alias(libs.plugins.changelog)
+    alias(libs.plugins.qodana)
+    alias(libs.plugins.kover)
     idea
 }
 
 group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
 
-val javaVersion = 17
-
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(javaVersion)
+        languageVersion.set(
+            provider { (tasks.matching { it is IntelliJPlatformVersionAware }.first() as IntelliJPlatformVersionAware).productInfo.buildNumber }
+                .map(Version::parse)
+                .map { buildNumber -> PlatformJavaVersions.entries.first { buildNumber >= it.key }.value }
+                .map { javaVersion -> JavaLanguageVersion.of(javaVersion.majorVersion) }
+        )
     }
-    sourceCompatibility = JavaVersion.toVersion(javaVersion)
-    targetCompatibility = JavaVersion.toVersion(javaVersion)
-}
-
-kotlin {
-    jvmToolchain(javaVersion)
 }
 
 // Configure project's dependencies
@@ -92,7 +92,11 @@ intellijPlatform {
         }
 
         ideaVersion {
-            sinceBuild = providers.gradleProperty("pluginSinceBuild")
+            sinceBuild.set(
+                provider { (tasks.matching { it is IntelliJPlatformVersionAware }.first() as IntelliJPlatformVersionAware).productInfo.buildNumber }
+                    .map(Version::parse)
+                    .map { buildNumber -> buildNumber.major.toString() }
+            )
             untilBuild = providers.gradleProperty("pluginUntilBuild")
         }
     }
