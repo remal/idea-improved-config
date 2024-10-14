@@ -37,5 +37,17 @@
       ignoreUnstable: false,
       extractVersion: "^(?<version>\\d+)(\\.\\d)*-EAP-SNAPSHOT$",
     },
+    {
+      matchDatasources: [
+        "maven"
+      ],
+      matchPackageNames: [
+        "/^com\\.jetbrains\\.plugins:/"
+      ],
+      ignoreUnstable: false,
+      registryUrls: [
+        "https://plugins.jetbrains.com/maven/",
+      ],
+    },
   ],
 }
