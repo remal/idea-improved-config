@@ -47,11 +47,10 @@ dependencies {
     intellijPlatform {
         create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
 
-        // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
+        bundledPlugin("com.intellij.java")
         bundledPlugin("com.intellij.gradle")
 
-        // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
-        plugin("CheckStyle-IDEA:5.95.0")
+        intellijPlatformPluginDependency("com.jetbrains.plugins:CheckStyle-IDEA:5.95.0")
 
         instrumentationTools()
         pluginVerifier()
