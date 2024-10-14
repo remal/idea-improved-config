@@ -9,10 +9,6 @@
     enabled: false,
   },
 
-  enabledManagers: [
-    'regex',
-  ],
-
   customManagers: [
     {
       customType: "regex",
