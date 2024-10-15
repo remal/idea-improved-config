@@ -6,9 +6,13 @@
 
     <depends>com.intellij.modules.platform</depends>
 
+    <depends optional="true" config-file="plugin-with-editorconfig.xml">org.editorconfig.editorconfigjetbrains</depends>
+    <depends optional="true" config-file="plugin-with-gradle.xml">com.intellij.gradle</depends>
+    <depends optional="true" config-file="plugin-with-checkstyle.xml">CheckStyle-IDEA</depends>
+
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable
-            parentId="tools"
+            parentId="root"
             instance="name.remal.idea_plugin.improved_config.config.ProjectConfigurable"
             displayName="Project Auto Config"
         />

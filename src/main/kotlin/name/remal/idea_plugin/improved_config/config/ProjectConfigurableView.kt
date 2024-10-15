@@ -8,6 +8,11 @@ import com.intellij.ui.dsl.builder.panel
 class ProjectConfigurableView {
 
     val component = panel {
+        group("EditorConfig") {
+            row {
+                editorConfigComponent = checkBox("Enable EditorConfig support").component
+            }
+        }
         group("Actions on Save") {
             row("Reformat code") {
                 reformatCodeComponent = comboBox(ReformatCode.entries, listCellRenderer { value ->
@@ -19,6 +24,15 @@ class ProjectConfigurableView {
             }
         }
     }
+
+
+    private lateinit var editorConfigComponent: JBCheckBox
+
+    var editorConfig: Boolean
+        get() = editorConfigComponent.isSelected
+        set(value) {
+            editorConfigComponent.isSelected = value
+        }
 
 
     private lateinit var reformatCodeComponent: ComboBox<ReformatCode>

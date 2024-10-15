@@ -1,0 +1,8 @@
+<idea-plugin>
+    <projectListeners>
+        <listener
+            topic="name.remal.idea_plugin.improved_config.config.ProjectConfigListener"
+            class="name.remal.idea_plugin.improved_config.EditorConfigHandler"
+        />
+    </projectListeners>
+</idea-plugin>

@@ -47,10 +47,10 @@ dependencies {
     intellijPlatform {
         create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
 
-        bundledPlugin("com.intellij.java")
+        bundledPlugin("org.editorconfig.editorconfigjetbrains")
         bundledPlugin("com.intellij.gradle")
 
-        intellijPlatformPluginDependency("com.jetbrains.plugins:CheckStyle-IDEA:5.95.0")
+        plugin("CheckStyle-IDEA:5.95.0")
 
         instrumentationTools()
         pluginVerifier()

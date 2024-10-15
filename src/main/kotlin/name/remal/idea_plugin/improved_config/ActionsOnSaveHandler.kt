@@ -13,21 +13,22 @@ class ActionsOnSaveHandler(project: Project) : ProjectConfigListener {
 
     private val formatOnSaveOptions = project.service<FormatOnSaveOptions>()
     private val optimizeImportsOnSaveOptions = project.service<OptimizeImportsOnSaveOptions>()
-    private val logger = thisLogger()
 
     override fun configurationChanged(settings: ProjectSettings) {
-        logger.info("Configuration changed: $settings")
+        val reformatCode = settings.reformatCode
+        val optimizeImports = settings.optimizeImports
+        thisLogger().info("applying config: reformatCode=$reformatCode, optimizeImports=$optimizeImports")
 
+        thisLogger().info("  configuring ${javaClass.name}")
         getStateOf(formatOnSaveOptions).apply {
-            logger.info("  configuring ${javaClass.name}")
-            this["myRunOnSave"] = settings.reformatCode != ReformatCode.DISABLED
+            this["myRunOnSave"] = reformatCode != ReformatCode.DISABLED
             this["myAllFileTypesSelected"] = true
-            this["myFormatOnlyChangedLines"] = settings.reformatCode == ReformatCode.CHANGED_LINES
+            this["myFormatOnlyChangedLines"] = reformatCode == ReformatCode.CHANGED_LINES
         }
 
+        thisLogger().info("  configuring ${javaClass.name}")
         getStateOf(optimizeImportsOnSaveOptions).apply {
-            logger.info("  configuring ${javaClass.name}")
-            this["myRunOnSave"] = settings.optimizeImports
+            this["myRunOnSave"] = optimizeImports
             this["myAllFileTypesSelected"] = true
         }
     }

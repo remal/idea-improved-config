@@ -8,7 +8,7 @@ import com.intellij.openapi.startup.ProjectActivity
 class ProjectConfigLoadActivity : ProjectActivity, DumbAware {
 
     override suspend fun execute(project: Project) {
-        project.service<ProjectPersistentState>().state
+        project.service<ProjectSettingsPersistentState>().state
     }
 
 }

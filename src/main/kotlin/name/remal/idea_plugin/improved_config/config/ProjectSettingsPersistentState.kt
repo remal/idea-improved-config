@@ -14,7 +14,7 @@ import name.remal.idea_plugin.improved_config.config.ProjectConfigListener.Compa
     storages = [Storage("improved-config.xml")],
     defaultStateAsResource = true,
 )
-class ProjectPersistentState(project: Project) : SimplePersistentStateComponent<ProjectSettings>(ProjectSettings()) {
+class ProjectSettingsPersistentState(project: Project) : SimplePersistentStateComponent<ProjectSettings>(ProjectSettings()) {
 
     private val configListener = project.messageBus.syncPublisher(CONFIG_CHANGES)
 

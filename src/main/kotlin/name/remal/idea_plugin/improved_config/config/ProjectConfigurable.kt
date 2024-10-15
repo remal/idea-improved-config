@@ -11,7 +11,7 @@ class ProjectConfigurable(project: Project) : Configurable {
 
     private val configListener = project.messageBus.syncPublisher(CONFIG_CHANGES)
 
-    private val stateService = project.service<ProjectPersistentState>()
+    private val stateService = project.service<ProjectSettingsPersistentState>()
 
     private var disposableView: ProjectConfigurableView? = null
 
@@ -31,16 +31,19 @@ class ProjectConfigurable(project: Project) : Configurable {
     private val view get() = disposableView!!
 
     override fun isModified() =
-        settings.reformatCode != view.reformatCode
+        settings.editorConfig != view.editorConfig
+            || settings.reformatCode != view.reformatCode
             || settings.optimizeImports != view.optimizeImports
 
     override fun apply() {
+        settings.editorConfig = view.editorConfig
         settings.reformatCode = view.reformatCode
         settings.optimizeImports = view.optimizeImports
         configListener.configurationChanged(settings)
     }
 
     override fun reset() {
+        view.editorConfig = settings.editorConfig
         view.reformatCode = settings.reformatCode
         view.optimizeImports = settings.optimizeImports
     }
